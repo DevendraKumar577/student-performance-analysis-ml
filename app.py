@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import numpy as np
 
 # ---------------- LOAD MODEL FILES ----------------
 model = joblib.load("student_risk_model.pkl")
@@ -13,7 +14,7 @@ st.set_page_config(
     layout="centered"
 )
 
-st.title("🎓 Student Performance Risk Predictor")
+st.title("Student Performance Risk Predictor")
 st.write("Predict student academic risk using Machine Learning")
 st.divider()
 
@@ -31,7 +32,6 @@ input_df = pd.DataFrame([{
     "Final_Exam_Score": final_exam_score
 }])
 
-# Align with training features
 input_df = input_df.reindex(columns=feature_names, fill_value=0)
 
 # ---------------- PREDICTION ----------------
@@ -43,14 +43,17 @@ if st.button("Predict Risk"):
     st.divider()
 
     if result == "At Risk":
-        st.error("🚨 Student is AT RISK")
+        st.error("⚠️ Student is AT RISK")
     elif result == "Medium":
         st.warning("⚠️ Student is at MEDIUM RISK")
     else:
         st.success("✅ Student is a HIGH PERFORMER")
 
+    # Simple explanation (Streamlit-safe)
     st.subheader("Input Summary")
     st.dataframe(input_df)
+
+
 
 
 
