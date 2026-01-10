@@ -3,20 +3,25 @@ import pandas as pd
 import joblib
 import numpy as np
 
-# ---------------- LOAD MODEL FILES ----------------
-model = joblib.load("student_risk_model.pkl")
-label_encoder = joblib.load("label_encoder.pkl")
-feature_names = joblib.load("feature_names.pkl")
-
 # ---------------- PAGE CONFIG ----------------
 st.set_page_config(
     page_title="Student Performance Risk Predictor",
     layout="centered"
 )
 
-st.title("Student Performance Risk Predictor")
-st.write("Predict student academic risk using Machine Learning")
+st.title("🎓 Student Performance Risk Predictor")
+st.write("Predict student academic risk using a Machine Learning model")
 st.divider()
+
+# ---------------- LOAD MODEL FILES ----------------
+@st.cache_resource
+def load_artifacts():
+    model = joblib.load("student_risk_model.pkl")
+    label_encoder = joblib.load("label_encoder.pkl")
+    feature_names = joblib.load("feature_names.pkl")
+    return model, label_encoder, feature_names
+
+model, label_encoder, feature_names = load_artifacts()
 
 # ---------------- INPUT SLIDERS ----------------
 quiz_avg = st.slider("Quiz Average (%)", 0, 100, 70)
@@ -32,26 +37,30 @@ input_df = pd.DataFrame([{
     "Final_Exam_Score": final_exam_score
 }])
 
+# Align input with training features
 input_df = input_df.reindex(columns=feature_names, fill_value=0)
 
 # ---------------- PREDICTION ----------------
-if st.button("Predict Risk"):
+if st.button("🔍 Predict Risk"):
 
     prediction = model.predict(input_df)[0]
     result = label_encoder.inverse_transform([prediction])[0]
 
     st.divider()
+    st.subheader("📊 Prediction Result")
 
     if result == "At Risk":
-        st.error("⚠️ Student is AT RISK")
+        st.error("⚠️ Student is **AT RISK**")
     elif result == "Medium":
-        st.warning("⚠️ Student is at MEDIUM RISK")
+        st.warning("🟡 Student is at **MEDIUM RISK**")
     else:
-        st.success("✅ Student is a HIGH PERFORMER")
+        st.success("🟢 Student is a **HIGH PERFORMER**")
 
-    # Simple explanation (Streamlit-safe)
-    st.subheader("Input Summary")
+    # ---------------- SIMPLE FEATURE VIEW ----------------
+    st.subheader("📌 Input Summary")
     st.dataframe(input_df)
+
+
 
 
 
