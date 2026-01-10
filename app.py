@@ -1,8 +1,6 @@
 import streamlit as st
 import pandas as pd
 import joblib
-import shap
-import numpy as np
 
 # ---------------- LOAD MODEL FILES ----------------
 model = joblib.load("student_risk_model.pkl")
@@ -15,8 +13,8 @@ st.set_page_config(
     layout="centered"
 )
 
-st.title("Student Performance Risk Predictor")
-st.write("Predict student academic risk using ML + Explainability (SHAP)")
+st.title("🎓 Student Performance Risk Predictor")
+st.write("Predict student academic risk using Machine Learning")
 st.divider()
 
 # ---------------- INPUT SLIDERS ----------------
@@ -36,13 +34,6 @@ input_df = pd.DataFrame([{
 # Align with training features
 input_df = input_df.reindex(columns=feature_names, fill_value=0)
 
-# ---------------- SHAP EXPLAINER (CACHED) ----------------
-@st.cache_resource
-def load_explainer():
-    return shap.Explainer(model)
-
-explainer = load_explainer()
-
 # ---------------- PREDICTION ----------------
 if st.button("Predict Risk"):
 
@@ -52,36 +43,16 @@ if st.button("Predict Risk"):
     st.divider()
 
     if result == "At Risk":
-        st.error("Student is AT RISK")
+        st.error("🚨 Student is AT RISK")
     elif result == "Medium":
-        st.warning("Student is at MEDIUM RISK")
+        st.warning("⚠️ Student is at MEDIUM RISK")
     else:
-        st.success("Student is a HIGH PERFORMER")
+        st.success("✅ Student is a HIGH PERFORMER")
 
-    # ---------------- SHAP EXPLANATION ----------------
-    st.subheader("Why did the model predict this?")
+    st.subheader("Input Summary")
+    st.dataframe(input_df)
 
-    shap_values = explainer(input_df)
 
-    # SHAP values for predicted class
-    shap_contrib = shap_values.values[0, :, prediction]
-
-    shap_df = pd.DataFrame({
-        "Feature": feature_names,
-        "Impact": shap_contrib
-    })
-
-    shap_df["Abs Impact"] = np.abs(shap_df["Impact"])
-    shap_df = shap_df.sort_values("Abs Impact", ascending=False)
-
-    st.write("Top factors influencing this prediction:")
-    st.dataframe(shap_df[["Feature", "Impact"]].head(8))
-
-    # ---------------- SHAP BAR CHART ----------------
-    st.subheader("Feature impact visualization")
-
-    shap_bar_df = shap_df.head(8).set_index("Feature")
-    st.bar_chart(shap_bar_df["Impact"])
 
 
 
