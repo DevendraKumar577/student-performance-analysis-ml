@@ -5,6 +5,9 @@ scikit-learn
 joblib
 matplotlib
 shap
+xgboost
+
+
 
 
 
