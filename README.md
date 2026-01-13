@@ -51,7 +51,6 @@ This project aims to:
 - NumPy
 - Scikit-learn
 - Joblib
-- Streamlit
 - Streamlit Community Cloud
 
 
@@ -79,6 +78,7 @@ Devendra Kumar
 B.Tech Student | Data Science & Machine Learning Enthusiast  
 GitHub: https://github.com/DevendraKumar577  
 Live App: https://student-performance-risk-predictor.streamlit.app
+
 
 
 
