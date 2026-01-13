@@ -40,7 +40,6 @@ This project aims to:
 - Midterm Exam Score (%)
 - Final Exam Score (%)
 
-Additional features used during training are automatically aligned during inference.
 
 
 
@@ -80,6 +79,7 @@ Devendra Kumar
 B.Tech Student | Data Science & Machine Learning Enthusiast  
 GitHub: https://github.com/DevendraKumar577  
 Live App: https://student-performance-risk-predictor.streamlit.app
+
 
 
 
