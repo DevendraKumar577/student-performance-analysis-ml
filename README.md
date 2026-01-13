@@ -1,7 +1,5 @@
 # Student Performance Risk Predictor
 
-Live App:  
-https://student-performance-risk-predictor.streamlit.app
 
 
 
@@ -82,6 +80,7 @@ Devendra Kumar
 B.Tech Student | Data Science & Machine Learning Enthusiast  
 GitHub: https://github.com/DevendraKumar577  
 Live App: https://student-performance-risk-predictor.streamlit.app
+
 
 
 
