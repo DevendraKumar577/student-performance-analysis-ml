@@ -74,8 +74,6 @@ The application is deployed on Streamlit Cloud and can be accessed here:
 
 https://student-performance-risk-predictor.streamlit.app
 
-Anyone can test the model directly without setting up the project locally.
-
 
 
 ## Author
@@ -84,5 +82,6 @@ Devendra Kumar
 B.Tech Student | Data Science & Machine Learning Enthusiast  
 GitHub: https://github.com/DevendraKumar577  
 Live App: https://student-performance-risk-predictor.streamlit.app
+
 
 
