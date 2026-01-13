@@ -1,27 +1,88 @@
-# Student Performance Analysis & Prediction (ML)
+# Student Performance Risk Predictor
 
-## Project Overview
-This project analyzes student performance data and applies basic machine learning techniques to predict academic outcomes.  
-The objective is to identify key factors influencing student performance and build a predictive model based on these factors.
+Live App:  
+https://student-performance-risk-predictor.streamlit.app
 
-## Key Analysis
-- Performed exploratory data analysis (EDA) to understand relationships between student details and academic performance.
-- Analyzed factors such as study time, previous scores, and other academic indicators.
-- Built a machine learning model to predict student performance using selected features.
-- Evaluated model performance using appropriate evaluation metrics.
 
-## Tools & Technologies
-- Python (Pandas, NumPy) – data cleaning and preprocessing
-- Matplotlib, Seaborn – data visualization
-- Scikit-learn – machine learning model building and evaluation
-- Jupyter Notebook
-- Git & GitHub
 
-## Files in Repository
-- student_performance_analysis.ipynb – data analysis and machine learning implementation
-- Students Performance Dataset.csv – dataset used for analysis
-- README.md – project documentation
+## About the Project
 
-## Insights
-This project demonstrates how data analysis and basic machine learning techniques can be used to uncover patterns in student performance and support data-driven academic decision-making.
+Student Performance Risk Predictor is an end-to-end Machine Learning web application that predicts a student’s academic performance category based on assessment scores.
+
+The goal of this project is to identify students who may be at academic risk at an early stage, so that timely interventions can be planned. The project focuses not only on model building, but also on deploying a working ML system that can be used by real users.
+
+This project was built and deployed as part of my hands-on learning in Machine Learning and Data Science.
+
+
+
+## Problem Statement
+
+In academic environments, it is often difficult to identify struggling students before it is too late. Traditional evaluation methods are usually reactive rather than proactive.
+
+This project aims to:
+- Predict student performance risk using machine learning
+- Classify students into meaningful performance categories
+- Provide a simple web interface for real-time predictions
+- Demonstrate a production-ready ML deployment
+
+
+
+## Machine Learning Solution
+
+- Type: Multi-class classification
+- Model: XGBoost Classifier
+- Target Output:
+  - At Risk
+  - Medium Risk
+  - High Performer
+
+### Input Features
+- Quiz Average (%)
+- Assignment Average (%)
+- Midterm Exam Score (%)
+- Final Exam Score (%)
+
+Additional features used during training are automatically aligned during inference.
+
+
+
+## Tech Stack
+
+- Python
+- XGBoost
+- Pandas
+- NumPy
+- Scikit-learn
+- Joblib
+- Streamlit
+- Streamlit Community Cloud
+
+
+
+## Application Features
+
+- Interactive sliders for input scores
+- Real-time prediction using a trained ML model
+- Clear performance category output
+- Deployed and accessible via a public URL
+- Cloud-compatible model loading
+
+
+## Live Demo
+
+The application is deployed on Streamlit Cloud and can be accessed here:
+
+https://student-performance-risk-predictor.streamlit.app
+
+Anyone can test the model directly without setting up the project locally.
+
+
+
+## Author
+
+Devendra Kumar  
+B.Tech Student | Data Science & Machine Learning Enthusiast  
+GitHub: https://github.com/DevendraKumar577  
+Live App: https://student-performance-risk-predictor.streamlit.app
+
 
