@@ -1,8 +1,6 @@
 # Student Performance Risk Predictor
 
 
-
-
 ## About the Project
 
 Student Performance Risk Predictor is an end-to-end Machine Learning web application that predicts a student’s academic performance category based on assessment scores.
@@ -78,6 +76,7 @@ Devendra Kumar
 B.Tech Student | Data Science & Machine Learning Enthusiast  
 GitHub: https://github.com/DevendraKumar577  
 Live App: https://student-performance-risk-predictor.streamlit.app
+
 
 
 
